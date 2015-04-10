@@ -1,0 +1,9 @@
+<center> **Abstract** </center>
+Locating a user via a mobile phone can be achieved through several ways. Only few techniques can achieve accurate results. GPS, Wifi, RFID are few of those techniques. GPS can track a user up to few meters of radius. Wifi cannot be as accurate as GPS because the network has a range that is limited to a building or organization. RFID can produce results that are more precise than that of GPS. RFID is appropriate for indoor tracking. 
+<p>Radio Frequency Identification(RFID) uses RFID tags, RFID readers and servers to maintain the communication between readers and the tags. RFID tags are installed on the devices, so the devices act as RFID tags. The readers can be any hardware device or antennas. The implementation has few restrictions to security and their reliability. In an closed environment tracking using RFID can be best implemented by using a network where every tag is connected to the networks centralized server. The main goal is to track the location of the users using RFID tags and a network. </p> 
+
+<center> **References** </center>
+<p>[1] Al-Ali A.R,Aloul Fadi A., Aji Nada R., Al-Zarouni Amin A. and Fakhro Nassar H., Mobile RFID Tracking System.
+	*Information and Communication Technologies: From Theory to Applications,2008. ICTTA 2008.3rd International Conference* (April 7-11,2008,Damascus),1-4.</p>
+<p>[2] Chan C.B. Henry, Fung S.H. and Hui C.P. Felix, RIFD-based Location Tracking System Using a Peer-to-Peer Network 	Architecture. *Proceedings of the 	International 	MultiConference of Engineers and Computer Scientists 2014 Vol I, 	IMECS 2014* (March 12-14,2014, Hong Kong).</p>
+<p>[3] Chawla Kirti, Robins Gabriel and Zhang Liuyi, Efficient RFID-Based Mobile Object Localization. *Wireless and Mobile 	Computing, Networking and Communications	(WiMob), 2010 IEEE 6th International Conference* (Oct. 11-13, 2010, ON), 	683-690.</p>
