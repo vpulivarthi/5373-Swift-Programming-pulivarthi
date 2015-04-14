@@ -1,7 +1,7 @@
 ## Srikanth Reddy Beerelli
 ## Sampath Kumar Manne
 ## Pulivarthi Vijay Kumar
-
+------
 
 ### Question 1
 Write a function to return min and max values of an integer array when,
