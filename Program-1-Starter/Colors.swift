@@ -186,7 +186,7 @@ class Colors {
             cString = cString.substringFromIndex(advance(cString.startIndex, 1))
         }
         
-        if (countElements(cString) != 6) {
+        if (count(cString) != 6) {
             return UIColor.grayColor()
         }
         
