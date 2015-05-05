@@ -7,6 +7,7 @@
 //
 
 import UIKit
+//import Alamofire
 
 
 class ViewController: UIViewController {
@@ -61,7 +62,7 @@ class ViewController: UIViewController {
         //println(write)
         
         //Setup the url to get colors from
-        let url = "https://raw.githubusercontent.com/rugbyprof/msu-swift/master/Swift%20Color%20Game%20for%20Kids/Swift%20Color%20Game%20for%20Kids/colors.json?token=AA_qiMX6aezCbZRcASGFVWX5IFfGJ2pwks5U2nY9wA%3D%3D"
+        let url = "http://cs.mwsu.edu/~griffin/swift/colors2.json"
 
         //Run alamo library get request to grab the json data
         request(.GET, url)
@@ -102,12 +103,12 @@ class ViewController: UIViewController {
         println("jsonDict")
     }
 
-    override func didReceiveMemoryWarning() {
+     func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func btnAnswer1ACTION(sender: UIButton) {
+     func btnAnswer1ACTION(sender: UIButton) {
         if button1Correct == true {
             lblCorrectIncorrect.text = "Correct!"
             totalCorrect++
@@ -118,7 +119,7 @@ class ViewController: UIViewController {
         matchColorLogic()
     }
     
-    @IBAction func btnAnswer2ACTION(sender: UIButton) {
+     func btnAnswer2ACTION(sender: UIButton) {
         if button2Correct == true {
             lblCorrectIncorrect.text = "Correct!"
             totalCorrect++
@@ -129,7 +130,7 @@ class ViewController: UIViewController {
         matchColorLogic()
     }
     
-    @IBAction func btnAnswer3ACTION(sender: UIButton) {
+     func btnAnswer3ACTION(sender: UIButton) {
         if button3Correct == true {
             lblCorrectIncorrect.text = "Correct!"
             totalCorrect++
@@ -141,7 +142,7 @@ class ViewController: UIViewController {
     }
     
     
-    @IBAction func btnFireColorAnimation(sender: UIButton) {
+     func btnFireColorAnimation(sender: UIButton) {
         println("fired action")
     }
     
@@ -277,7 +278,7 @@ class myJson {
 
     class func parseJSON(inputData: NSData) -> NSDictionary{
         var error: NSError?
-        var boardsDictionary: NSDictionary = NSJSONSerialization.JSONObjectWithData(inputData, options: NSJSONReadingOptions.MutableContainers, error: &error) as NSDictionary
+        var boardsDictionary: NSDictionary = NSJSONSerialization.JSONObjectWithData(inputData, options: NSJSONReadingOptions.MutableContainers, error: &error) as! NSDictionary
         return boardsDictionary
     }
 }
