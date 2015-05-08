@@ -18,6 +18,7 @@
 		85B0543C1A7FF98700B60421 /* Swift_Color_Game_for_KidsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85B0543B1A7FF98700B60421 /* Swift_Color_Game_for_KidsTests.swift */; };
 		85B054471A801B0B00B60421 /* thumbs_down.png in Resources */ = {isa = PBXBuildFile; fileRef = 85B054451A801B0B00B60421 /* thumbs_down.png */; };
 		85B054481A801B0B00B60421 /* thumbs_up.png in Resources */ = {isa = PBXBuildFile; fileRef = 85B054461A801B0B00B60421 /* thumbs_up.png */; };
+		B71012A71AFD3AB2004B2D11 /* colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = B71012A61AFD3AB2004B2D11 /* colors.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +60,7 @@
 		85B0543B1A7FF98700B60421 /* Swift_Color_Game_for_KidsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Swift_Color_Game_for_KidsTests.swift; sourceTree = "<group>"; };
 		85B054451A801B0B00B60421 /* thumbs_down.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = thumbs_down.png; sourceTree = "<group>"; };
 		85B054461A801B0B00B60421 /* thumbs_up.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = thumbs_up.png; sourceTree = "<group>"; };
+		B71012A61AFD3AB2004B2D11 /* colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = colors.swift; path = ../../../Downloads/colors.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,6 +118,7 @@
 		85B054231A7FF98600B60421 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				B71012A61AFD3AB2004B2D11 /* colors.swift */,
 				85B054451A801B0B00B60421 /* thumbs_down.png */,
 				85B054461A801B0B00B60421 /* thumbs_up.png */,
 				85B054241A7FF98600B60421 /* Info.plist */,
@@ -245,6 +248,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8514B53D1A818147005F9715 /* SwiftyJSON.swift in Sources */,
+				B71012A71AFD3AB2004B2D11 /* colors.swift in Sources */,
 				8514B5FE1A82F507005F9715 /* Alamofire.swift in Sources */,
 				85B054281A7FF98600B60421 /* ViewController.swift in Sources */,
 				85B054261A7FF98600B60421 /* AppDelegate.swift in Sources */,

@@ -7,7 +7,6 @@
 //
 
 import UIKit
-//import Alamofire
 
 
 class ViewController: UIViewController {
@@ -23,6 +22,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var btnAnswer2OUTLET: UIButton!
     @IBOutlet weak var btnAnswer3OUTLET: UIButton!
     
+    
     var buttonAnswer = 0
     
     var colorNumber = 0
@@ -33,10 +33,12 @@ class ViewController: UIViewController {
     
     var totalCorrect = 0;
     
+    var myColors:Colors = Colors()
+    
     var colorNames : [String] = ["Red","Green","Blue","Orange","Black","White","Brown","Purple","Gray","Yellow"]
     
     //Color dictionary type not used in the program but kept as an example for future
-    var colorRGB : [Dictionary<String,UInt>] = [
+   /* var colorRGB : [Dictionary<String,UInt>] = [
         ["Red":0xFF0000],
         ["Green":0x00FF00],
         ["Blue":0x0000FF],
@@ -47,8 +49,8 @@ class ViewController: UIViewController {
         ["Purple":0x8968CD],
         ["Gray":0xBEBEBE],
         ["Yellow":0xFFFF00]
-    ]
-
+    ]*/
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         matchColorLogic()
@@ -59,11 +61,12 @@ class ViewController: UIViewController {
         
         //Write to  a file example:
         //let write : Bool = File.write("/Volumes/1_TB_HDD/griffin/Desktop/colors2.json", content: "String to write")
-        //println(write)
+        // println(write)
         
         //Setup the url to get colors from
+        
         let url = "http://cs.mwsu.edu/~griffin/swift/colors2.json"
-
+        
         //Run alamo library get request to grab the json data
         request(.GET, url)
             .responseJSON { (req, res, json, error) in
@@ -84,13 +87,15 @@ class ViewController: UIViewController {
                     for (key,val) in json{
                         println("\(key):\(val)")
                     }
-					println(json["azure"])
+                    
+                    println(json["springgreen"])
                     
                     for (key,val) in json{
-                        if(key=="azure"){
-                        println(json["\(key)"])
+                        if(key=="whitesmoke"){
+                            println(json["\(key)"])
                             break
-							}
+                        }
+                    }
                 }
                 
                 //Question: How do I access a single value directly?
@@ -98,17 +103,17 @@ class ViewController: UIViewController {
         
         
         //Another way to read the json file
-        let json = myJson.getJSON(url)
-        var jsonDict = myJson.parseJSON(json)
+        //let json = myJson.getJSON(url)
+        //var jsonDict = myJson.parseJSON(json)
         println("jsonDict")
     }
-
-     func didReceiveMemoryWarning() {
+    
+    override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-     func btnAnswer1ACTION(sender: UIButton) {
+    @IBAction func btnAnswer1ACTION(sender: UIButton) {
         if button1Correct == true {
             lblCorrectIncorrect.text = "Correct!"
             totalCorrect++
@@ -119,7 +124,7 @@ class ViewController: UIViewController {
         matchColorLogic()
     }
     
-     func btnAnswer2ACTION(sender: UIButton) {
+    @IBAction func btnAnswer2ACTION(sender: UIButton) {
         if button2Correct == true {
             lblCorrectIncorrect.text = "Correct!"
             totalCorrect++
@@ -130,7 +135,7 @@ class ViewController: UIViewController {
         matchColorLogic()
     }
     
-     func btnAnswer3ACTION(sender: UIButton) {
+    @IBAction func btnAnswer3ACTION(sender: UIButton) {
         if button3Correct == true {
             lblCorrectIncorrect.text = "Correct!"
             totalCorrect++
@@ -142,7 +147,7 @@ class ViewController: UIViewController {
     }
     
     
-     func btnFireColorAnimation(sender: UIButton) {
+    @IBAction func btnFireColorAnimation(sender: UIButton) {
         println("fired action")
     }
     
@@ -181,12 +186,12 @@ class ViewController: UIViewController {
         
         return true;
     }
-
+    
     
     func changeColor() -> Bool{
         
         println(UIColor.brownColor())
-
+        
         if(colorNumber == 0){
             //lblChangeColor.backgroundColor = UIColor.redColor()
             lblChangeColor.backgroundColor = UIColorFromRGB(0xFF0000)
@@ -235,7 +240,65 @@ class ViewController: UIViewController {
             alpha: CGFloat(1.0)
         )
     }
-
+    
+    /********************************************************************************************
+    * Function: parseJson
+    *   Parses json object and loads it into the "Colors" class for us to use.
+    * @Params:
+    *   json:JSON - Json object to be parsed
+    * @Returns:
+    *   Void
+    ********************************************************************************************/
+    func parseJson(json:JSON)->Void{
+        
+        var colors = Colors()
+        var colorName = ""
+        var hexValue = ""
+        var hsv:HSV
+        var rgb:RGB
+        var hsl:HSL
+        var col = ""
+        var hex = ""
+        var r = 0.0
+        var g = 0.0
+        var b = 0.0
+        var h1 = 0
+        var s1 = 0.0
+        var h2 = 0
+        var s2 = 0.0
+        var l = 0.0
+        var v = 0.0
+        
+        for (index,subjson) in json {
+            for (key,val) in subjson {
+                switch key {
+                case "colorName":
+                    col = val.stringValue
+                case "hexValue":
+                    hex = val.stringValue
+                case "RGB":
+                    r = val["R"].doubleValue
+                    g = val["G"].doubleValue
+                    b = val["B"].doubleValue
+                case "HSL":
+                    h1 = val["H"].intValue
+                    s1 = val["S"].doubleValue
+                    l = val["L"].doubleValue
+                case "HSV":
+                    h2 = val["H"].intValue
+                    s2 = val["S"].doubleValue
+                    v = val["V"].doubleValue
+                default:
+                    println("Error!")
+                }
+            }
+            
+            self.myColors.addColor(col,hex:hex,red:r,green:g,blue:b,hue1:h1,sat1:s1,hue2:h2,sat2:s2,value:v,lightness:l)
+        }
+        self.myColors.printColors()
+        println(self.myColors.fetchColorName("#CE2029"))
+        println(self.myColors.fetchRGB("#CE2029"))
+    }
 }
 
 /********************************************************************************************
@@ -271,19 +334,14 @@ class File {
 *   parseJSON(NSData) returns Dictionary
 ********************************************************************************************/
 class myJson {
-
+    
     class func getJSON(urlToRequest: String) -> NSData{
         return NSData(contentsOfURL: NSURL(string: urlToRequest)!)!
     }
-
+    
     class func parseJSON(inputData: NSData) -> NSDictionary{
         var error: NSError?
         var boardsDictionary: NSDictionary = NSJSONSerialization.JSONObjectWithData(inputData, options: NSJSONReadingOptions.MutableContainers, error: &error) as! NSDictionary
         return boardsDictionary
     }
 }
-
-
-
-
-
