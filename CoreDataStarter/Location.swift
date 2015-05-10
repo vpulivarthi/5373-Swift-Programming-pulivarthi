@@ -1,8 +1,8 @@
 //
 //  Location.swift
-//  Location
+//  MyLocations
 //
-//  Created by V. Pulivarthi on 4/13/15.
+//  Created by Sai rahul gobisetty on 5/10/15.
 //  Copyright (c) 2015 Razeware. All rights reserved.
 //
 
@@ -15,7 +15,7 @@ class Location: NSManagedObject {
     @NSManaged var latitude: Double
     @NSManaged var longitude: Double
     @NSManaged var date: NSDate
-    @NSManaged var locationdescription: String
+    @NSManaged var locationDescription: String
     @NSManaged var category: String
     @NSManaged var placemark: CLPlacemark?
 

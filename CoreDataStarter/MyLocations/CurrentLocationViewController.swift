@@ -20,9 +20,8 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
   @IBOutlet weak var getButton: UIButton!
 
   let locationManager = CLLocationManager()
-    
     var managedObjectContext: NSManagedObjectContext!
-    
+
   var location: CLLocation?
   var updatingLocation = false
   var lastLocationError: NSError?
@@ -89,7 +88,7 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
   }
   
   func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
-    let newLocation = locations.last as CLLocation
+    let newLocation = locations.last as! CLLocation
     println("didUpdateLocations \(newLocation)")
     
     if newLocation.timestamp.timeIntervalSinceNow < -5 {
@@ -259,8 +258,8 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
   
   override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
     if segue.identifier == "TagLocation" {
-      let navigationController = segue.destinationViewController as UINavigationController
-      let controller = navigationController.topViewController as LocationDetailsViewController
+      let navigationController = segue.destinationViewController as! UINavigationController
+      let controller = navigationController.topViewController as! LocationDetailsViewController
       
       controller.coordinate = location!.coordinate
       controller.placemark = placemark
